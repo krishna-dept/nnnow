@@ -12,6 +12,7 @@ const ProductQuantity = ({
     initialData = null,
     onValue,
     children,
+    dropdownOptions,
     ...props
 }) => {
     // Internationalized label text
@@ -37,6 +38,7 @@ const ProductQuantity = ({
 
     // Handler for quantity changes
     const handleValueChange = (value) => {
+        console.log('in handlevalue change', quantity)
         const parsed = parseInt(value, 10);
         setProductConfiguration(config => ({
             ...config,
@@ -61,6 +63,8 @@ const ProductQuantity = ({
                 name: "quantity",
                 defaultValue: quantity.toString(),
                 value: quantity.toString(),
+                options: dropdownOptions,
+                handleSelect: handleValueChange,
                 min: 1,
                 "aria-label": labelText,
                 onValue: handleValueChange,

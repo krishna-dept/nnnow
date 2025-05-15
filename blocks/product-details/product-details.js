@@ -40,6 +40,19 @@ export default async function decorate(block) {
   const product = events._lastEvent?.['pdp/data']?.payload ?? null;
   const labels = await fetchPlaceholders();
 
+  const DROPDOWN_MAX_QUANTITY = 10;
+
+  const dropdownOptions = Array.from(
+    { length: parseInt(DROPDOWN_MAX_QUANTITY, 10) },
+    (_, i) => {
+      const quantityOption = i + 1;
+      return {
+        value: `${quantityOption}`,
+        text: `${quantityOption}`,
+      };
+    }
+  );
+
   // Layout
   const fragment = document.createRange().createContextualFragment(`
     <div class="product-details__wrapper">
@@ -144,7 +157,7 @@ export default async function decorate(block) {
     pdpRendered.render(ProductOptions, { hideSelectedValue: false })($options),
 
     // Configuration  Quantity
-    pdpRendered.render(ProductQuantity, {})($quantity),
+    pdpRendered.render(ProductQuantity, {dropdownOptions})($quantity),
 
     // Configuration – Button - Add to Cart
     UI.render(Button, {
