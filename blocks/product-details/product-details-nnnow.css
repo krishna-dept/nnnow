@@ -1,0 +1,183 @@
+@media (width >= 900px) {
+    .product-details__left-column {
+        grid-column: 1 / span 7 !important;
+    }
+    .product-details__right-column {
+        grid-column: 9 / span 5 !important;
+        padding-top: var(--spacing-medium);
+    }
+}
+
+.product-details__gallery .pdp-carousel {
+    gap: 99px !important;
+}
+
+.pdp-carousel__wrapper {
+    --total-width: 420px !important;
+}
+.pdp-header__title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: black;
+    letter-spacing: .7px;
+}
+
+.pdp-header__sku{
+    font-size: 18px;
+    line-height: 1.15;
+    color: #333333;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: .7px;
+}
+
+.pdp-price-range .dropin-price, .pdp-price__percent-off {
+    font-size: 18px;
+    line-height: 1.15;
+    color: black;
+    letter-spacing: .7px;
+}
+
+.pdp-price__percent-off {
+    color: #ea0020;
+    font-weight: bold;
+}
+
+
+.product-details__emi .snap_emi_txt {
+    margin: 15px 0;
+}
+
+.snap-emi-inst {
+    font-size: 16px;
+}
+
+.snap_cashback_line {
+    position: absolute;
+    top: -9px;
+    border-radius: 4px;
+    background: #F60E89;
+    color: #fff;
+    padding: 1px 6px 1px 8px;
+    line-height: normal;
+    font-style: normal;
+    left: 11px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+}
+
+.snap_emi_white_month_text.first_line_snmpt {
+    margin-right: 5px;
+}
+
+.non_snmot {
+    margin-right: 4px;
+}
+
+.snap_merchant_logo_add_widget {
+    width: 70px;
+}
+
+.product-details__configuration {
+    margin-top: 10px !important;
+}
+
+.pdp-swatches__field__label, .product-details__quantity__field__label{
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.dropin-color-swatch__container .dropin-color-swatch__span {
+    border-radius: 1px;
+    width: 32px;
+    height: 32px;
+    border: 2px solid white;
+    box-shadow: none;
+}
+
+.dropin-color-swatch__container input[type=radio]:checked~.dropin-color-swatch__span {
+    box-shadow: 0 0 0 var(--shape-border-width-3) var(--color-neutral-50),
+            0 0 0 4px var(--bg-color);
+}
+
+.product-details__buttons {
+    align-items: center;
+}
+
+.product-details__buttons__add-to-cart .dropin-button {
+    border-radius: 0;
+    background-color: #f39;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    padding-block: 14px;
+}
+
+.product-details__buttons__add-to-wishlist .dropin-iconButton--secondary {
+    border-width: 2px;
+    border-color: #f39;
+    color: #f39;
+}
+
+/* Container */
+.pdp-tabs {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: sans-serif;
+}
+
+/* Tab Navigation */
+.pdp-tabs-nav {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.pdp-tab {
+  background: black;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  transition: all 0.2s ease;
+  padding: 15px 25px;
+  text-transform: uppercase;
+}
+
+.pdp-tab.active {
+  font-weight: 600;
+  color: black;
+  background-color: white;
+}
+
+/* Tab Content */
+.pdp-tab-content {
+  font-size: 14px;
+  height: 240px;
+  color: #222;
+  overflow: auto;
+  padding: 32px;
+}
+
+.pdp-attributes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pdp-attributes-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}

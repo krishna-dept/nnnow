@@ -1,5 +1,6 @@
 /* stylelint-disable no-empty-source */
 /* stylelint-disable selector-class-pattern */
+@import "product-details-nnnow.css";
 
 .product-details__wrapper {
   display: grid;
