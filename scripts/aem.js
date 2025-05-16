@@ -451,6 +451,7 @@ function decorateIcon(span, prefix = '', alt = '') {
     img.alt = alt;
     img.loading = 'lazy';
     span.append(img);
+    
   }
 }
 /**
