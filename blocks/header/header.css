@@ -816,6 +816,11 @@ header .nav-search-input .search_autocomplete .popover-container {
     background: #f3f3f3;
   }
 
+  header nav .section.nav-brand .default-content-wrapper ul>li>a{
+    font-size: 16px;
+    margin-left: 13px;
+  }
+
   header nav .section.nav-brand .default-content-wrapper ul>li {
     display: flex;
     align-items: center;
