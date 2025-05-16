@@ -92,10 +92,10 @@ function toggleAllNavSections(sections, expanded = false) {
  * @param {*} forceExpanded Optional param to force nav expand behavior when not null
  */
 function toggleMenu(nav, navSections, forceExpanded = null) {
-  const expanded = forceExpanded !== null ? !forceExpanded : nav.getAttribute('aria-expanded') === 'true';
+  const expanded = forceExpanded !== null ? !forceExpanded : navSections.getAttribute('aria-expanded') === 'true';
   const button = nav.querySelector('.nav-hamburger button');
   document.body.style.overflowY = expanded || isDesktop.matches ? '' : 'hidden';
-  nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  navSections.setAttribute('aria-expanded', expanded ? 'false' : 'true');
   toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
   button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
   // enable nav dropdown keyboard accessibility
@@ -166,7 +166,15 @@ function setupSubmenu(navSection) {
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+
+  let navPath;
+  if (isDesktop.matches) {
+    navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  }
+  else {
+    navPath = '/mobile-nav';
+  }
+  // const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
@@ -190,6 +198,18 @@ export default async function decorate(block) {
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
+
+    if (isDesktop.matches) {
+      const searchWrapper = document.createElement('div');
+      searchWrapper.classList.add('nav-search');
+      searchWrapper.innerHTML = `
+      <img src="images/pinksearch.png">
+      <input type="text" placeholder="Search" aria-label="Search" />
+      
+    `;
+      navSections.insertBefore(searchWrapper, navSections.querySelector('.default-content-wrapper'));
+    }
+
     navSections
       .querySelectorAll(':scope .default-content-wrapper > ul > li')
       .forEach((navSection) => {
@@ -221,23 +241,22 @@ export default async function decorate(block) {
   const excludeMiniCartFromPaths = ['/checkout'];
 
   const minicart = document.createRange().createContextualFragment(`
-     <div class="minicart-wrapper nav-tools-wrapper">
-       <button type="button" class="nav-cart-button" aria-label="Cart"></button>
-       <div class="minicart-panel nav-tools-panel"></div>
-     </div>
-   `);
+    <div class="minicart-wrapper nav-tools-wrapper">
+      <button type="button" class="nav-cart-button" aria-label="Cart">
+         <img src="images/pinkcart.png">
+      </button>
+      <div class="minicart-panel nav-tools-panel"></div>
+    </div>
+  `);
 
-  navTools.append(minicart);
-
-  const minicartPanel = navTools.querySelector('.minicart-panel');
-
-  const cartButton = navTools.querySelector('.nav-cart-button');
+  const minicartWrapper = minicart.querySelector('.minicart-wrapper');
+  const minicartPanel = minicartWrapper.querySelector('.minicart-panel');
+  const cartButton = minicartWrapper.querySelector('.nav-cart-button');
 
   if (excludeMiniCartFromPaths.includes(window.location.pathname)) {
     cartButton.style.display = 'none';
   }
 
-  // load nav as fragment
   const miniCartMeta = getMetadata('mini-cart');
   const miniCartPath = miniCartMeta ? new URL(miniCartMeta, window.location).pathname : '/mini-cart';
   loadFragment(miniCartPath).then((miniCartFragment) => {
@@ -256,7 +275,52 @@ export default async function decorate(block) {
 
   cartButton.addEventListener('click', () => toggleMiniCart());
 
-  // Cart Item Counter
+  if(!isDesktop.matches){
+    const search = document.createRange().createContextualFragment(`
+      <div class="search-wrapper nav-tools-wrapper">
+        <button type="button" class="nav-search-button">Search</button>
+        <div class="nav-search-input nav-search-panel nav-tools-panel">
+          <form action="/search" method="GET">
+            <input id="search" type="search" name="q" placeholder="Search" />
+            <div id="search_autocomplete" class="search-autocomplete"></div>
+          </form>
+        </div>
+      </div>
+      `);
+    
+      navTools.append(search);
+    
+      const searchPanel = navTools.querySelector('.nav-search-panel');
+    
+      const searchButton = navTools.querySelector('.nav-search-button');
+    
+      const searchInput = searchPanel.querySelector('input');
+    
+      const searchForm = searchPanel.querySelector('form');
+    
+      searchForm.action = rootLink('/search');
+    
+      async function toggleSearch(state) {
+        const show = state ?? !searchPanel.classList.contains('nav-tools-panel--show');
+    
+        searchPanel.classList.toggle('nav-tools-panel--show', show);
+    
+        if (show) {
+          await import('./searchbar.js');
+          searchInput.focus();
+        }
+      }
+    
+      navTools.querySelector('.nav-search-button').addEventListener('click', () => {
+        if (isDesktop.matches) {
+          toggleAllNavSections(navSections);
+          overlay.classList.remove('show');
+        }
+        toggleSearch();
+      });
+    
+  }
+
   events.on(
     'cart/data',
     (data) => {
@@ -269,59 +333,21 @@ export default async function decorate(block) {
     { eager: true },
   );
 
-  /** Search */
-  // TODO
-  const search = document.createRange().createContextualFragment(`
-  <div class="search-wrapper nav-tools-wrapper">
-    <button type="button" class="nav-search-button">Search</button>
-    <div class="nav-search-input nav-search-panel nav-tools-panel">
-      <form action="/search" method="GET">
-        <input id="search" type="search" name="q" placeholder="Search" />
-        <div id="search_autocomplete" class="search-autocomplete"></div>
-      </form>
-    </div>
-  </div>
-  `);
-
-  navTools.append(search);
-
-  const searchPanel = navTools.querySelector('.nav-search-panel');
-
-  const searchButton = navTools.querySelector('.nav-search-button');
-
-  const searchInput = searchPanel.querySelector('input');
-
-  const searchForm = searchPanel.querySelector('form');
-
-  searchForm.action = rootLink('/search');
-
-  async function toggleSearch(state) {
-    const show = state ?? !searchPanel.classList.contains('nav-tools-panel--show');
-
-    searchPanel.classList.toggle('nav-tools-panel--show', show);
-
-    if (show) {
-      await import('./searchbar.js');
-      searchInput.focus();
+  // Place cart and auth UI in nav-sections only on desktop
+  const defaultWrapper = navSections.querySelector('.default-content-wrapper');
+  if (isDesktop.matches) {
+    if (defaultWrapper) {
+      defaultWrapper.insertAdjacentElement('afterend', minicartWrapper);
+      renderAuthDropdown(navSections);
     }
+  } else {
+    navTools.append(minicartWrapper);
   }
 
-  navTools.querySelector('.nav-search-button').addEventListener('click', () => {
-    if (isDesktop.matches) {
-      toggleAllNavSections(navSections);
-      overlay.classList.remove('show');
-    }
-    toggleSearch();
-  });
-
-  // Close panels when clicking outside
+  // Close cart panel on outside click
   document.addEventListener('click', (e) => {
     if (!minicartPanel.contains(e.target) && !cartButton.contains(e.target)) {
       toggleMiniCart(false);
-    }
-
-    if (!searchPanel.contains(e.target) && !searchButton.contains(e.target)) {
-      toggleSearch(false);
     }
   });
 
@@ -343,26 +369,30 @@ export default async function decorate(block) {
     toggleMenu(nav, navSections, false);
   });
 
-  // hamburger for mobile
+  // Hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
-      <span class="nav-hamburger-icon"></span>
-    </button>`;
+    <span class="nav-hamburger-icon"></span>
+  </button>`;
   hamburger.addEventListener('click', () => {
-    navWrapper.classList.toggle('active');
+    // navWrapper.classList.toggle('active');
     overlay.classList.toggle('show');
     toggleMenu(nav, navSections);
   });
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
-  // prevent mobile nav behavior on window resize
+
+  // Initial state and resize listener
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
+  // Auth dropdown rendering for mobile/tablet only
   renderAuthCombine(
     navSections,
     () => !isDesktop.matches && toggleMenu(nav, navSections, false),
   );
-  renderAuthDropdown(navTools);
+  if (!isDesktop.matches) {
+    renderAuthDropdown(navTools);
+  }
 }
