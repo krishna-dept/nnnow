@@ -358,6 +358,8 @@ async function loadLazy(doc) {
   loadFonts();
 }
 
+await loadScript('https://assets.adobedtm.com/56086c44eca3/1861f9f921ad/launch-165737a2f958-development.min.js',{ async:''})
+
 /**
  * Loads everything that happens a lot later,
  * without impacting the user experience.

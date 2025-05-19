@@ -27,11 +27,31 @@ import { fetchPlaceholders, setJsonLd } from '../../scripts/commerce.js';
 import { IMAGES_SIZES } from '../../scripts/initializers/pdp.js';
 import '../../scripts/initializers/cart.js';
 import { rootLink } from '../../scripts/scripts.js';
+import SnapmintWidget from './emi.js';
+import PromotionBanner from './BannerSlot.js';
+import ProductAttributesAccordion from './ProductAttributesAccordion.js';
+// import ProductAttributesAccordion from './ProductAttributesAccordion.js';
+
+const Emi = document.createElement('div')
+Emi.classList.add("emi")
 
 export default async function decorate(block) {
   // eslint-disable-next-line no-underscore-dangle
   const product = events._lastEvent?.['pdp/data']?.payload ?? null;
   const labels = await fetchPlaceholders();
+
+  const DROPDOWN_MAX_QUANTITY = 10;
+
+  const dropdownOptions = Array.from(
+    { length: parseInt(DROPDOWN_MAX_QUANTITY, 10) },
+    (_, i) => {
+      const quantityOption = i + 1;
+      return {
+        value: `${quantityOption}`,
+        text: `${quantityOption}`,
+      };
+    }
+  );
 
   // Layout
   const fragment = document.createRange().createContextualFragment(`
@@ -43,6 +63,7 @@ export default async function decorate(block) {
       <div class="product-details__right-column">
         <div class="product-details__header"></div>
         <div class="product-details__price"></div>
+        <div class="product-details__emi"></div>
         <div class="product-details__gallery"></div>
         <div class="product-details__short-description"></div>
         <div class="product-details__configuration">
@@ -53,24 +74,31 @@ export default async function decorate(block) {
             <div class="product-details__buttons__add-to-wishlist"></div>
           </div>
         </div>
+        <div class="product-details__promotion"></div>
         <div class="product-details__description"></div>
         <div class="product-details__attributes"></div>
       </div>
     </div>
+    <div class="product-details__accordion"></div>
   `);
 
   const $alert = fragment.querySelector('.product-details__alert');
   const $gallery = fragment.querySelector('.product-details__gallery');
   const $header = fragment.querySelector('.product-details__header');
   const $price = fragment.querySelector('.product-details__price');
+  const $emi = fragment.querySelector('.product-details__emi');
   const $galleryMobile = fragment.querySelector('.product-details__right-column .product-details__gallery');
   const $shortDescription = fragment.querySelector('.product-details__short-description');
   const $options = fragment.querySelector('.product-details__options');
   const $quantity = fragment.querySelector('.product-details__quantity');
   const $addToCart = fragment.querySelector('.product-details__buttons__add-to-cart');
   const $addToWishlist = fragment.querySelector('.product-details__buttons__add-to-wishlist');
+  const $promotionBanner = fragment.querySelector('.product-details__promotion');
   const $description = fragment.querySelector('.product-details__description');
-  const $attributes = fragment.querySelector('.product-details__attributes');
+  const $attributes = fragment.querySelector('.product-details__attributes')
+  const $accordion = fragment.querySelector('.product-details__accordion');
+
+  console.log($accordion);
 
   block.appendChild(fragment);
 
@@ -121,6 +149,7 @@ export default async function decorate(block) {
     // Price
     pdpRendered.render(ProductPrice, {})($price),
 
+    pdpRendered.render(SnapmintWidget, {})($emi),
     // Short Description
     pdpRendered.render(ProductShortDescription, {})($shortDescription),
 
@@ -128,7 +157,7 @@ export default async function decorate(block) {
     pdpRendered.render(ProductOptions, { hideSelectedValue: false })($options),
 
     // Configuration  Quantity
-    pdpRendered.render(ProductQuantity, {})($quantity),
+    pdpRendered.render(ProductQuantity, {dropdownOptions})($quantity),
 
     // Configuration – Button - Add to Cart
     UI.render(Button, {
@@ -213,11 +242,17 @@ export default async function decorate(block) {
       },
     })($addToWishlist),
 
+    //PromotionBanner
+    pdpRendered.render(PromotionBanner, {})($promotionBanner),
+
     // Description
     pdpRendered.render(ProductDescription, {})($description),
 
     // Attributes
     pdpRendered.render(ProductAttributes, {})($attributes),
+
+    pdpRendered.render(ProductAttributesAccordion, {})($accordion)
+
   ]);
 
   // Lifecycle Events
