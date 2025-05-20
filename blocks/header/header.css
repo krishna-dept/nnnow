@@ -17,7 +17,6 @@ header .nav-wrapper {
   width: 100%;
   z-index: 3;
   position: fixed;
-  border-bottom: 1px solid var(--color-neutral-300);
 }
 
 header nav {
@@ -70,7 +69,6 @@ header nav .nav-hamburger {
   justify-content: center;
   display: flex;
   align-items: center;
-  background-color: #fff;
 }
 
 header nav .nav-hamburger button {
@@ -312,8 +310,9 @@ header nav .nav-sections ul>li:empty {
   }
 
   header nav .nav-sections .default-content-wrapper>ul>li:hover,
-  header nav .nav-sections .nav-drop[aria-expanded='true'] {
-    background-color: var(--color-neutral-200);
+  header nav .nav-sections .nav-drop[aria-expanded='true'],
+  header nav .nav-sections .default-content-wrapper>ul>li a:hover {
+    color: #f39;
   }
 }
 
@@ -806,13 +805,17 @@ header .nav-search-input .search_autocomplete .popover-container {
     background: #f3f3f3;
   }
 
+  header nav .section.nav-brand .default-content-wrapper ul:first-child li::after {
+    content: unset;
+  }
+
   header nav .section.nav-brand .default-content-wrapper ul:last-child::after {
     content: "";
     position: absolute;
     top: -13px;
     left: 341px;
     width: 100vw;
-    height: 49px;
+    height: 53px;
     background: #f3f3f3;
   }
 
@@ -824,6 +827,17 @@ header .nav-search-input .search_autocomplete .popover-container {
   header nav .section.nav-brand .default-content-wrapper ul>li {
     display: flex;
     align-items: center;
+    position: relative;
+  }
+
+  header nav .section.nav-brand .default-content-wrapper ul>li::after {
+    content: "|";
+    height: 10px;
+    width: 2px;
+    position: absolute;
+    top: 3px;
+    right: 0;
+    color: #d6d6d6;
   }
 
   header nav .section.nav-brand .default-content-wrapper ul>li>picture img {
@@ -831,9 +845,20 @@ header .nav-search-input .search_autocomplete .popover-container {
     height: 45px;
   }
 
+  header nav .section.nav-brand .default-content-wrapper ul:first-child>li>span {
+    width: 19px;
+    height: 16px;
+  }
+
+  header nav .section.nav-brand .default-content-wrapper ul>li>span {
+    width: 26px;
+    height: 16px;
+  }
+
   header nav .section.nav-brand .default-content-wrapper ul>li>span img {
-    width: 14px;
-    height: 14px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
   }
 
 
@@ -874,14 +899,15 @@ header .nav-search-input .search_autocomplete .popover-container {
     height: 44px;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid #f4f2f2;;
   }
-
-
 
   header nav .nav-sections .nav-search {
     width: 33.33%;
     position: relative;
     border-bottom: 1px solid #d4d4d4;
+    display: flex;
+    align-items: center;
   }
 
   header nav .nav-sections .nav-search button {
@@ -898,20 +924,35 @@ header .nav-search-input .search_autocomplete .popover-container {
   header nav .nav-sections .minicart-wrapper.nav-tools-wrapper .nav-cart-button {
     padding: 0;
     width: auto;
+    position: relative;
+  }
+
+  header nav .nav-sections .minicart-wrapper.nav-tools-wrapper .nav-cart-button::after {
+    content: "|";
+    height: 10px;
+    width: 2px;
+    position: absolute;
+    top: 7px;
+    left: 38px;
+    color: #d6d6d6;
   }
 
   header nav .nav-sections .minicart-wrapper.nav-tools-wrapper .nav-cart-button img {
     display: block;
-    width: 25px;
+    width: 18px;
+    height: 18px;
   }
 
   .dropdown-wrapper.nav-tools-wrapper .nav-dropdown-button svg {
     margin-right: 10px;
+    width: 25px;
+    height: 18px;
   }
 
   header nav .nav-sections .nav-search img {
     width: 16px;
     position: absolute;
+    cursor: pointer;
   }
 
   header nav .nav-sections .nav-search input {
@@ -959,6 +1000,34 @@ header .nav-search-input .search_autocomplete .popover-container {
     display: flex;
     flex-direction: row;
     background: #f2f2f2;
+  }
+
+  header nav .nav-tools > div {
+    position: relative;
+  }
+
+  header nav .nav-tools > div:first-child:after {
+    content: "|";
+    height: 10px;
+    width: 2px;
+    position: absolute;
+    top: -3px;
+    left: 30px;
+    color: #d6d6d6;
+  }
+
+  header nav .nav-tools > div:nth-child(2)::after {
+    content: "|";
+    height: 10px;
+    width: 2px;
+    position: absolute;
+    top: 7px;
+    left: 42px;
+    color: #d6d6d6;
+  }
+
+  header nav .nav-tools > div:last-child:after {
+    content: unset;
   }
 
   header nav .nav-tools .default-content-wrapper>ul {
@@ -1047,8 +1116,8 @@ header .nav-search-input .search_autocomplete .popover-container {
   }
 
   .section.last-section-container .default-content-wrapper>ul li span img {
-    width: 75px;
-    height: 17px;
+    width: 40px;
+    height: 15px;
     margin: 0 10px;
   }
 }

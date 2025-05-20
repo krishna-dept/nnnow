@@ -60,11 +60,10 @@ footer .footer p {
 } */
 
 @media (width <= 768px) {
-    footer {
-        padding: 0 16px;
+    .footer.block {
+        padding-bottom: 30px;
     }
 }
-
 
 /* newsletter container css */
 .section.form-container {
@@ -138,12 +137,13 @@ footer .footer p {
 @media (width <= 768px) {
     .section.form-container {
         background: #fff;
+        padding: 0 16px;
     }
     .form.newsletter-container form {
         width: unset;
     }
     .section.form-container .default-content-wrapper h3 {
-        padding: 12px 4px;
+        padding: 16px 4px;
         font-size: 14px;
         line-height: 16px;
         text-align: left;
@@ -196,7 +196,14 @@ footer .footer p {
     padding-left: 35px;
 }
 
+.section.navcontainer-container .nav-container ul li a:hover {
+    color: #f39;
+}
+
 @media (width <= 768px) {
+    .section.navcontainer-container {
+        padding: 0 16px;
+    }
     .section.navcontainer-container .nav-container {
         display: none;
     }
@@ -348,3 +355,45 @@ footer .footer p {
         font-size: 12px;
     }
 }
+
+
+.section.get-appblock {
+    display: none;
+  }
+  
+  @media screen and (max-width:900px) {
+    .section.get-appblock {
+      display: block;
+      background-color: #f2f2f2;
+      padding: 14px 16px;
+    }
+    .section.get-appblock .default-content-wrapper p {
+      margin: 0;
+      text-align: center;
+      padding: 10px 0 20px;
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 700;
+      font-family: roboto;
+    }
+    .section.get-appblock .default-content-wrapper ul {
+      list-style: none;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .section.get-appblock .default-content-wrapper ul li:nth-child(2) {
+      padding-left: 15px;
+    }
+    .section.get-appblock .default-content-wrapper ul li span {
+      display: inline-block;
+      width: 114px;
+      height: 34px;
+    }
+    .section.get-appblock .default-content-wrapper ul li span img {
+      height: 100%;
+      width: 100%;
+    }
+  }
