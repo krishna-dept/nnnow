@@ -2,6 +2,10 @@
 /* stylelint-disable selector-class-pattern */
 @import "product-details-nnnow.css";
 
+.section.product-details-container .default-content-wrapper:has(p picture img):nth-child(2){
+  display: none;
+}
+
 .product-details__wrapper {
   display: grid;
   grid-template-columns: repeat(var(--grid-1-columns), 1fr);
@@ -61,7 +65,7 @@
 
 .product-details__buttons {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   gap: var(--grid-1-gutters);
   grid-auto-rows: max-content;
 }

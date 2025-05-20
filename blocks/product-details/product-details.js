@@ -28,6 +28,8 @@ import { IMAGES_SIZES } from '../../scripts/initializers/pdp.js';
 import '../../scripts/initializers/cart.js';
 import { rootLink } from '../../scripts/scripts.js';
 import SnapmintWidget from './emi.js';
+import StadSize from './size.js';
+import ActionIcons from './ActionIcons.js'
 import PromotionBanner from './BannerSlot.js';
 import ProductAttributesAccordion from './ProductAttributesAccordion.js';
 // import ProductAttributesAccordion from './ProductAttributesAccordion.js';
@@ -64,6 +66,7 @@ export default async function decorate(block) {
         <div class="product-details__header"></div>
         <div class="product-details__price"></div>
         <div class="product-details__emi"></div>
+        <div class="product-details__size"></div>
         <div class="product-details__gallery"></div>
         <div class="product-details__short-description"></div>
         <div class="product-details__configuration">
@@ -75,8 +78,6 @@ export default async function decorate(block) {
           </div>
         </div>
         <div class="product-details__promotion"></div>
-        <div class="product-details__description"></div>
-        <div class="product-details__attributes"></div>
       </div>
     </div>
     <div class="product-details__accordion"></div>
@@ -87,6 +88,7 @@ export default async function decorate(block) {
   const $header = fragment.querySelector('.product-details__header');
   const $price = fragment.querySelector('.product-details__price');
   const $emi = fragment.querySelector('.product-details__emi');
+  const $size = fragment.querySelector('.product-details__size');
   const $galleryMobile = fragment.querySelector('.product-details__right-column .product-details__gallery');
   const $shortDescription = fragment.querySelector('.product-details__short-description');
   const $options = fragment.querySelector('.product-details__options');
@@ -94,8 +96,8 @@ export default async function decorate(block) {
   const $addToCart = fragment.querySelector('.product-details__buttons__add-to-cart');
   const $addToWishlist = fragment.querySelector('.product-details__buttons__add-to-wishlist');
   const $promotionBanner = fragment.querySelector('.product-details__promotion');
-  const $description = fragment.querySelector('.product-details__description');
-  const $attributes = fragment.querySelector('.product-details__attributes')
+  // const $description = fragment.querySelector('.product-details__description');
+  // const $attributes = fragment.querySelector('.product-details__attributes')
   const $accordion = fragment.querySelector('.product-details__accordion');
 
   console.log($accordion);
@@ -150,6 +152,8 @@ export default async function decorate(block) {
     pdpRendered.render(ProductPrice, {})($price),
 
     pdpRendered.render(SnapmintWidget, {})($emi),
+
+    pdpRendered.render(StadSize, {})($size),
     // Short Description
     pdpRendered.render(ProductShortDescription, {})($shortDescription),
 
@@ -212,44 +216,70 @@ export default async function decorate(block) {
     })($addToCart),
 
     // Configuration - Add to Wishlist
-    UI.render(Button, {
-      icon: Icon({ source: 'Heart' }),
-      variant: 'secondary',
-      'aria-label': labels.Custom?.AddToWishlist?.label,
-      onClick: async () => {
-        try {
-          addToWishlist.setProps((prev) => ({
-            ...prev,
-            disabled: true,
-            'aria-label': labels.Custom?.AddingToWishlist?.label,
-          }));
+    // UI.render(Button, {
+    //   icon: Icon({ source: 'Share' }),
+    //   variant: 'secondary',
+    //   'aria-label': labels.Custom?.AddToWishlist?.label,
+    //   onClick: async () => {
+    //     try {
+    //       addToWishlist.setProps((prev) => ({
+    //         ...prev,
+    //         disabled: true,
+    //         'aria-label': labels.Custom?.AddingToWishlist?.label,
+    //       }));
 
-          const values = pdpApi.getProductConfigurationValues();
+    //       const values = pdpApi.getProductConfigurationValues();
 
-          if (values?.sku) {
-            const wishlist = await import('../../scripts/wishlist/api.js');
-            await wishlist.addToWishlist(values.sku);
-          }
-        } catch (error) {
-          console.error(error);
-        } finally {
-          addToWishlist.setProps((prev) => ({
-            ...prev,
-            disabled: false,
-            'aria-label': labels.Custom?.AddToWishlist?.label,
-          }));
-        }
-      },
-    })($addToWishlist),
+    //       if (values?.sku) {
+    //         const wishlist = await import('../../scripts/wishlist/api.js');
+    //         await wishlist.addToWishlist(values.sku);
+    //       }
+    //     } catch (error) {
+    //       console.error(error);
+    //     } finally {
+    //       addToWishlist.setProps((prev) => ({
+    //         ...prev,
+    //         disabled: false,
+    //         'aria-label': labels.Custom?.AddToWishlist?.label,
+    //       }));
+    //     }
+    //   },
+    // })($addToWishlist),
 
+   // Configuration - Share Product
+// UI.render(Button, {
+//   icon: Icon({ source: 'Sharei' }), // ✅ Uses the name you exported
+//   variant: 'secondary',
+//   'aria-label': labels.Custom?.ShareProduct?.label || 'Share this product',
+//   onClick: async () => {
+//     try {
+//       const shareData = {
+//         title: document.title,
+//         url: window.location.href,
+//       };
+
+//       if (navigator.share) {
+//         await navigator.share(shareData);
+//       } else {
+//         await navigator.clipboard.writeText(shareData.url);
+//         alert('Link copied to clipboard!');
+//       }
+//     } catch (err) {
+//       console.error('Share failed:', err);
+//     }
+//   },
+// })($shareButton),
+
+  pdpRendered.render(ActionIcons, {})($addToWishlist),
+    
     //PromotionBanner
     pdpRendered.render(PromotionBanner, {})($promotionBanner),
 
     // Description
-    pdpRendered.render(ProductDescription, {})($description),
+    // pdpRendered.render(ProductDescription, {})($description),
 
     // Attributes
-    pdpRendered.render(ProductAttributes, {})($attributes),
+    // pdpRendered.render(ProductAttributes, {})($attributes),
 
     pdpRendered.render(ProductAttributesAccordion, {})($accordion)
 

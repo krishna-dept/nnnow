@@ -149,10 +149,12 @@
     position: absolute;
     z-index: -1;
     top: 0;
+    left: 0;
     display: flex;
     min-height: 400px;
     background-color: #f3f3f3;
-    margin-left: -13%;
+    margin-left: -15%;
+    overflow: hidden;
 }
 
 .pdp-tabs-image {
@@ -181,7 +183,7 @@
     font-weight: bold;
     color: white;
     transition: all 0.2s ease;
-    padding: 15px 25px;
+    padding: 15px 22px;
     text-transform: uppercase;
 }
 

@@ -25,7 +25,6 @@ const ProductAttributesTabs = ({ initialData = null, ...props }) => {
       localeListener?.off?.();
     };
   }, []);
-
   const renderTabContent = () => {
     if (activeTab === 0 && Array.isArray(productData?.attributes)) {
       const validAttributes = productData.attributes.filter(
@@ -34,7 +33,7 @@ const ProductAttributesTabs = ({ initialData = null, ...props }) => {
 
       return jsxs("div", {
         className: "pdp-attributes-list",
-        children: validAttributes.map(({ label, value }, idx) =>
+        children:[ validAttributes.map(({ label, value }, idx) =>
           jsxs("div", {
             className: "pdp-attributes-section",
             children: [
@@ -54,7 +53,12 @@ const ProductAttributesTabs = ({ initialData = null, ...props }) => {
               })
             ]
           }, idx)
-        )
+        ),
+        jsxs("div",{
+          className : "description",
+          children : productData.description.replace(/<\/?div>/g, '')
+        })
+      ]
       });
     }
 

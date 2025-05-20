@@ -8,6 +8,7 @@
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     padding-bottom: 1rem;
+    scrollbar-width: none;
 }
 
 .product-recommendations .product-grid {
