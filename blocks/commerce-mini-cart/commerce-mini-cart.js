@@ -15,7 +15,7 @@ export default async function decorate(block) {
   } = readBlockConfig(block);
 
   block.innerHTML = '';
-
+  // debugger;
   return provider.render(MiniCart, {
     routeEmptyCartCTA: startShoppingURL ? () => rootLink(startShoppingURL) : undefined,
     routeCart: cartURL ? () => rootLink(cartURL) : undefined,
