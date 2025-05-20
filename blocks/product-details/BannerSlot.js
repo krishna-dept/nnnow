@@ -9,7 +9,7 @@ const PromotionBanner = () => {
       className: "nwc-anchortag",
       children: d("img", {
         className: "nwc-img nw-pdpbannerslot",
-        src: "https://static.nnnow.com/client/assets/images/pdp/pdp_desktop_1.jpg",
+        src: "../../images/pdp_desktop_1.webp",
         alt: "BannerImage"
       })
     })
