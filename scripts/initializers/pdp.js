@@ -20,8 +20,8 @@ import {
 import { getHeaders } from '../configs.js';
 
 export const IMAGES_SIZES = {
-  width: 960,
-  height: 1191,
+  width: 380,
+  height: 380,
 };
 
 await initializeDropin(async () => {
