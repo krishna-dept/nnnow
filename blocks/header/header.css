@@ -319,14 +319,14 @@ header nav .nav-sections ul>li:empty {
 /* tools */
 header nav .nav-tools-panel {
   z-index: 100;
-  position: absolute;
-  box-shadow: var(--shape-shadow-2);
-  background: var(--background-color);
-  top: var(--nav-height);
-  right: 0;
-  width: 100%;
-  display: none;
-  box-sizing: border-box;
+    position: absolute;
+    box-shadow: var(--shape-shadow-2);
+    background: var(--background-color);
+    top: var(--nav-height);
+    right: -62px;
+    width: 300px;
+    display: none;
+    box-sizing: border-box;
 }
 
 header nav .nav-tools-panel--show {
