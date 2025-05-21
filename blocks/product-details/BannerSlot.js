@@ -11,6 +11,7 @@ const PromotionBanner = () => {
         className: "nwc-img nw-pdpbannerslot",
         src: "../../images/pdp_desktop_1.webp",
         alt: "BannerImage",
+        loading:"lazy",
         width: 384,
         height: 202
       })

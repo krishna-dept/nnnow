@@ -34,6 +34,7 @@ const SnapmintWidget = () => {
               d("span", { className: "snap_first_line_dot" }),
               d("img", {
                 alt: "snapmint_widget_logo",
+                loading : "lazy",
                 src: "https://assets.snapmint.com/assets/merchant/snapmint_logo_black_text.svg",
                 className: "snap_merchant_logo_add_widget"
               })
@@ -49,6 +50,7 @@ const SnapmintWidget = () => {
                   children: [
                     d("img", {
                       src: "https://preemi.snapmint.com/assets/whitelable/UPI-Logo-vector%201.svg",
+                      loading : "lazy",
                       className: "snap_upi_widget_imgd"
                     }),
                     d("span", {
@@ -64,6 +66,7 @@ const SnapmintWidget = () => {
               d("span", {}),
               d("div", {
                 children: d("img", {
+                  loading: "lazy",
                   alt: "snapmint_widget_snap_buy_now_btn",
                   src: "https://assets.snapmint.com/assets/merchant/buyonemi_nnnow_btn.png",
                   className: "snap_buy_now_btn"
