@@ -170,7 +170,7 @@
 /* Tab Navigation */
 .pdp-tabs-nav {
     display: flex;
-    border-bottom: 1px solid #ddd;
+    /* border-bottom: 1px solid #ddd; */
     gap: 10px;
 }
 
