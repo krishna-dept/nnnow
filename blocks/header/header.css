@@ -947,7 +947,7 @@ header .nav-search-input .search_autocomplete .popover-container {
     position: relative;
   }
 
-  header nav .nav-sections .minicart-wrapper.nav-tools-wrapper .nav-cart-button::after {
+  header nav .nav-sections .minicart-wrapper.nav-tools-wrapper .nav-cart-button[data-count]::after {
     content: attr(data-count);
     position: absolute;
     top: 5px;
