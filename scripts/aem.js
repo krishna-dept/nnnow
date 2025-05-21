@@ -439,6 +439,8 @@ function decorateIcon(span, prefix = '', alt = '') {
     img.dataset.iconName = path;
     img.src = `${window.hlx.codeBasePath}${prefix + path}`;
     img.alt = alt;
+    img.height='24px';
+    img.width='24px';
     img.loading = 'lazy';
     span.append(img);
   } else {
