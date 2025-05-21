@@ -19,7 +19,10 @@ const ActionIcons = () => {
         children: [
           d("div", {
             className: "circle share",
-            children: d("img", { src: "../../icons/share.svg", width:'30px', height:'30px', alt: "Share icon" }),
+            children: d("img", { src: "../../icons/share.svg", width:'30px',
+                 loading:'lazy',
+                 height:'30px',
+                  alt: "Share icon" }),
           }),
           d("div", { className: "label", children: "SHARE" }),
         ],
