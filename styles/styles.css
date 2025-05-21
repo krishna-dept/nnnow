@@ -426,6 +426,9 @@ main>.section:first-of-type {
     height: unset;
 }
 
+  main>.section>div{
+    padding: 0 28px;
+}
 }
 
 /* section metadata */
