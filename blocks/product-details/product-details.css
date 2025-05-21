@@ -122,3 +122,34 @@
     grid-column: 1 / span 2;
   }
 }
+
+.product-details__buttons__add-to-wishlist .action-icons{
+  margin: 0 auto;
+}
+
+.dropin-illustrated-message .dropin-illustrated-message__action{
+  font-size: 17px;
+}
+
+.dropin-illustrated-message__heading{
+  font-size: 16px;
+}
+
+
+@media (width <= 900px){
+  .dropin-illustrated-message .dropin-illustrated-message__action{
+    font-size: 14px;
+  }
+  
+  .dropin-illustrated-message__heading{
+    font-size: 14px;
+  }
+  
+  .dropin-card__content{
+    padding: 0;
+  }
+
+  .cart-mini-cart__products{
+    padding-bottom: unset;
+  }
+}
