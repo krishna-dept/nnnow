@@ -56,7 +56,7 @@ const ProductAttributesTabs = ({ initialData = null, ...props }) => {
         ),
         jsxs("div",{
           className : "description",
-          children : productData.description.replace(/<\/?div>/g, '')
+          children : productData.description.replace(/<\/?[^>]+>/g, '')
         })
       ]
       });

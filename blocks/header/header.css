@@ -1156,7 +1156,7 @@ header .nav-search-input .search_autocomplete .popover-container {
   header nav .nav-tools-panel {
     left: 10%;
     width: 80%;
-    padding: 20px;
+    padding: 12px;
   }
   header nav .nav-tools > div:first-child:after,
   header nav .nav-tools > div:nth-child(2)::after {
