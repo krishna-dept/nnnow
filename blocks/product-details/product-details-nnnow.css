@@ -180,7 +180,9 @@
     padding: 10px 16px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: bold;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    font-family: roboto;
     color: white;
     transition: all 0.2s ease;
     padding: 15px 22px;
@@ -189,6 +191,7 @@
 
 .pdp-tab.active {
     font-weight: 600;
+    font-family: roboto;
     color: black;
     background-color: white;
 }
@@ -196,6 +199,8 @@
 /* Tab Content */
 .pdp-tab-content {
     font-size: 14px;
+    font-weight: 400;
+    font-family: roboto;
     height: 240px;
     background-color: white;
     color: black;
@@ -207,6 +212,12 @@
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+.pdp-attributes-list .description {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: roboto;
 }
 
 .pdp-attributes-list li {

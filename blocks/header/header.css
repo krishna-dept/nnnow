@@ -978,6 +978,10 @@ header .nav-search-input .search_autocomplete .popover-container {
     padding-left: 38px;
     width: 88%;
     border: unset;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    font-family: roboto;
   }
 
   header nav .section.nav-sections .default-content-wrapper {
@@ -1138,5 +1142,20 @@ header .nav-search-input .search_autocomplete .popover-container {
     width: 40px;
     height: 15px;
     margin: 0 10px;
+  }
+}
+
+@media (width <= 900px) {
+  header nav .nav-tools > div {
+    position: unset;
+  }
+  .dropdown-wrapper.nav-tools-wrapper .nav-auth-menu-panel{
+    width: 80%;
+  }
+
+  header nav .nav-tools-panel {
+    left: 10%;
+    width: 80%;
+    padding: 20px;
   }
 }
