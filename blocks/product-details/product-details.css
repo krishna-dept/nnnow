@@ -155,4 +155,9 @@
   .cart-mini-cart__products{
     padding-bottom: unset;
   }
+
+  .pdp-carousel__wrapper:not(.pdp-carousel__wrapper--scrollbar){
+    width: 100%;
+  }
+
 }
