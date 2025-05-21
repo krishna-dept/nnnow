@@ -22,6 +22,7 @@ import { getHeaders } from '../configs.js';
 export const IMAGES_SIZES = {
   width: 380,
   height: 380,
+  optimize:'medium'
 };
 
 await initializeDropin(async () => {
@@ -68,7 +69,8 @@ await initializeDropin(async () => {
 
 async function preloadImageMiddleware(data) {
   const image = data?.images?.[0]?.url?.replace(/^https?:/, '');
-
+  // const image = 'https://s7d1.scene7.com/is/image/SolutionPartnerSandbox/ADB388-2?$smart-bfc$&wid=380&hei=380'
+// debugger;
   if (image) {
     await UI.render(Image, {
       src: image,
