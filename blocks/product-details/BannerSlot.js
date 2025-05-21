@@ -10,7 +10,9 @@ const PromotionBanner = () => {
       children: d("img", {
         className: "nwc-img nw-pdpbannerslot",
         src: "../../images/pdp_desktop_1.webp",
-        alt: "BannerImage"
+        alt: "BannerImage",
+        width: 384,
+        height: 202
       })
     })
   });
