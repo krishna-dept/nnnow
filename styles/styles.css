@@ -13,7 +13,8 @@
  */
 
 /* stylelint-disable no-empty-source */
-:root, .dropin-design {
+:root,
+.dropin-design {
   /* Adobe Commerce Dropin design tokens */
   --color-brand-300: #6d6d6d;
   --color-brand-500: #454545;
@@ -139,7 +140,8 @@
   src: local("Helvetica");
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -264,7 +266,7 @@ main pre {
   white-space: pre;
 }
 
-main > div {
+main>div {
   margin: var(--spacing-xbig) var(--spacing-small);
 }
 
@@ -380,7 +382,7 @@ main img {
 }
 
 /* sections */
-main > .section {
+main>.section {
   margin: var(--spacing-xbig) 0;
 }
 
@@ -388,7 +390,7 @@ main > .section {
   display: none;
 }
 
-main > .section > div {
+main>.section>div {
   max-width: 1200px;
   margin: auto;
   padding: 0 var(--spacing-medium);
@@ -398,9 +400,16 @@ main > .section:first-of-type {
   margin-top: 0;
 }
 
-@media (width >= 900px) {
-  main > .section > div {
+@media (width >=900px) {
+  main>.section>div {
     padding: 0 var(--spacing-big);
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  main>.section:first-of-type {
+    margin-top: 56px;
   }
 }
 
@@ -433,7 +442,7 @@ body.columns main {
   gap: var(--grid-4-gutters);
 }
 
-body.columns main > .section {
+body.columns main>.section {
   flex: 1;
   flex-basis: 100%;
   max-width: unset;
@@ -441,31 +450,31 @@ body.columns main > .section {
   padding: unset;
 }
 
-body.columns main > .section > div {
+body.columns main>.section>div {
   max-width: unset;
   padding: unset;
 }
 
-body.columns main > .section > div:not(:last-child) {
+body.columns main>.section>div:not(:last-child) {
   margin-bottom: var(--gap, unset);
 }
 
-body.columns main > .section:empty {
+body.columns main>.section:empty {
   display: none;
 }
 
-@media (width >= 600px) {
+@media (width >=600px) {
   body.columns main {
     padding: var(--spacing-large) var(--spacing-big);
   }
 }
 
-@media (width >= 900px) {
+@media (width >=900px) {
   body.columns main {
     flex-direction: row;
   }
 
-  body.columns main > .section {
+  body.columns main>.section {
     flex: 1;
     flex-basis: var(--column-width, auto);
   }
