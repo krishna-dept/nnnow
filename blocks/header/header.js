@@ -243,7 +243,7 @@ export default async function decorate(block) {
   const minicart = document.createRange().createContextualFragment(`
     <div class="minicart-wrapper nav-tools-wrapper">
       <button type="button" class="nav-cart-button" aria-label="Cart">
-         <img src="/images/pinkcart.png">
+         <img src="/images/pinkcart.png" height:"18px" width:"18px">
       </button>
       <div class="minicart-panel nav-tools-panel"></div>
     </div>
