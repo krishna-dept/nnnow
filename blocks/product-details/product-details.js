@@ -5,6 +5,7 @@ import {
   Icon,
   Button,
   provider as UI,
+  Breadcrumbs,
 } from '@dropins/tools/components.js';
 import { events } from '@dropins/tools/event-bus.js';
 import * as pdpApi from '@dropins/storefront-pdp/api.js';
@@ -29,6 +30,7 @@ import '../../scripts/initializers/cart.js';
 import { rootLink } from '../../scripts/scripts.js';
 import SnapmintWidget from './emi.js';
 import StadSize from './size.js';
+import Breadcrumb from './Breadcrumb.js';
 import ActionIcons from './ActionIcons.js'
 import PromotionBanner from './BannerSlot.js';
 import ProductAttributesAccordion from './ProductAttributesAccordion.js';
@@ -57,6 +59,7 @@ export default async function decorate(block) {
 
   // Layout
   const fragment = document.createRange().createContextualFragment(`
+    <div class="product_breadcrumbs"></div>
     <div class="product-details__wrapper">
       <div class="product-details__alert"></div>
       <div class="product-details__left-column">
@@ -83,6 +86,7 @@ export default async function decorate(block) {
     <div class="product-details__accordion"></div>
   `);
 
+  const $breadcrumb = fragment.querySelector('.product_breadcrumbs');
   const $alert = fragment.querySelector('.product-details__alert');
   const $gallery = fragment.querySelector('.product-details__gallery');
   const $header = fragment.querySelector('.product-details__header');
@@ -122,6 +126,7 @@ export default async function decorate(block) {
     _attributes,
   ] = await Promise.all([
     // Gallery (Mobile)
+    pdpRendered.render(Breadcrumb, {})($breadcrumb),
     pdpRendered.render(ProductGallery, {
       controls: 'dots',
       arrows: true,
