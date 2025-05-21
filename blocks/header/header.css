@@ -238,13 +238,20 @@ header nav .nav-sections ul>li:empty {
     cursor: pointer;
   }
 
+  header nav .nav-sections .default-content-wrapper>ul>li,
   header nav .nav-sections .default-content-wrapper>ul>li a {
     text-decoration: none;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 700;
+    font-family: roboto;
+    letter-spacing: 1.5px;
+    color: #000;
   }
 
   header nav .nav-sections ul {
     display: flex;
-    gap: 24px;
+    gap: 60px;
     margin: 0;
   }
 
@@ -261,6 +268,17 @@ header nav .nav-sections ul>li:empty {
 
   header nav .nav-sections .default-content-wrapper>ul>li {
     flex: 0 1 auto;
+  }
+
+  header nav .nav-sections .default-content-wrapper .submenu-wrapper>ul {
+    gap: 24px;
+  }
+
+  header nav .nav-sections .default-content-wrapper .submenu-wrapper>ul>li>a {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    font-family: roboto;
   }
 
   header nav .nav-sections .default-content-wrapper>ul>li[aria-expanded='true'] .submenu-wrapper {
@@ -821,8 +839,12 @@ header .nav-search-input .search_autocomplete .popover-container {
   }
 
   header nav .section.nav-brand .default-content-wrapper ul>li>a{
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 16px;
     margin-left: 13px;
+    font-weight: 400;
+    font-family: roboto;
+    color: #000;
   }
 
   header nav .section.nav-brand .default-content-wrapper ul>li {
