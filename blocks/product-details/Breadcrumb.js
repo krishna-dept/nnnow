@@ -23,7 +23,16 @@ const Breadcrumb = () => {
                     display: flex;
                     list-style: none;
                     gap: 35px;
+                    margin: 8px 0;
+                    padding: 0;
+                    overflow: auto;
+                    scrollbar-width: thin;
                     }
+
+                    .breadcrumb-list a{
+                        white-space: nowrap;
+                    } 
+
                 .breadcrumb-list {
                     position: relative;
                     }
