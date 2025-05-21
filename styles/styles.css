@@ -396,27 +396,36 @@ main>.section>div {
   padding: 0 var(--spacing-medium);
 }
 
-main > .section:first-of-type {
+main>.section:first-of-type {
   margin-top: 0;
-}
-
-header {
-  padding-top: 187px;
-  position: relative;
-  height: unset;
 }
 
 @media (width >=900px) {
   main>.section>div {
     padding: 0 var(--spacing-big);
   }
+
+  header {
+    padding-top: 187px;
+    position: relative;
+    height: unset;
+  }
 }
+
+
 
 @media screen and (max-width: 900px) {
 
   main>.section:first-of-type {
-    margin-top: 56px;
+    /* margin-top: 56px; */
   }
+
+  header {
+    padding-top: 114px;
+    position: relative;
+    height: unset;
+}
+
 }
 
 /* section metadata */
