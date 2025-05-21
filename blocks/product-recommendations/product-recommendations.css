@@ -87,4 +87,14 @@
     .product-recommendations {
         min-height: 534px;
     }
+
+    .product-recommendations h2{
+        font-size: 24px;
+        line-height: 28px;
+        letter-spacing: 2.4px;
+        font-weight: 700;
+        font-family: roboto;
+        text-transform: uppercase;
+        padding-bottom: 15px;
+    }
 }
