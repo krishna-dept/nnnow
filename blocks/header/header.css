@@ -582,6 +582,19 @@ header .nav-search-input .search_autocomplete .popover-container {
   header {
     position: relative;
   }
+  header {
+    padding-top: 114px;
+    position: relative;
+    height: unset;
+}
+header .nav-wrapper {
+  background-color: var(--background-color);
+  width: 100%;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  height: 109px;
+}
 
   header .nav-wrapper.active,
   header .nav-wrapper:has(nav[aria-expanded='true']) {
@@ -834,7 +847,7 @@ header .nav-search-input .search_autocomplete .popover-container {
     top: -13px;
     left: 341px;
     width: 100vw;
-    height: 53px;
+    height: 47px;
     background: #f3f3f3;
   }
 
