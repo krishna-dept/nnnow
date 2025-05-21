@@ -85,13 +85,13 @@ const ProductAttributesTabs = ({ initialData = null, ...props }) => {
               jsx("div", {
                 className: "pdp-tabs-image",
                 style: {
-                  backgroundImage: 'url("https://cdn15.nnnow.com/web-images/large/styles/GSLV6UU6E01/1685437682320/1.jpg")'
+                  // backgroundImage: 'url("https://cdn15.nnnow.com/web-images/large/styles/GSLV6UU6E01/1685437682320/1.jpg")'
                 }
               }),
               jsx("div", {
                 className: "pdp-tabs-image",
                 style: {
-                  backgroundImage: 'url("https://cdn11.nnnow.com/web-images/large/styles/GSLV6UU6E01/1685437682316/2.jpg")'
+                  // backgroundImage: 'url("https://cdn11.nnnow.com/web-images/large/styles/GSLV6UU6E01/1685437682316/2.jpg")'
                 }
               })
             ]
