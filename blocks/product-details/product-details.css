@@ -135,6 +135,9 @@
   font-size: 16px;
 }
 
+.breadcrumb-list.active a{
+  color: #f39;
+}
 
 @media (width <= 900px){
   .dropin-illustrated-message .dropin-illustrated-message__action{
